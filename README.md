@@ -1,0 +1,1 @@
+wget https://raw.githubusercontent.com/FrontFabric/dockerenv/master/nodejs-4-1/reactjs-1.0.0/dockerenv-reactjs-1-0-0.sh
