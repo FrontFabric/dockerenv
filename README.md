@@ -7,3 +7,6 @@ todo
 -- jekyll
 -- blog + post
 -- remove repos
+-- dockerenv login
+-- custom sh before build
+-- version like reactjs
