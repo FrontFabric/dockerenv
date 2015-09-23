@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 BASEURL="https://raw.githubusercontent.com/nodejs/docker-node/master/4.1/Dockerfile"
 BASEIMG="de-nodejs-4-1"
@@ -7,6 +8,14 @@ APPNAME=${PWD##*/}
 APPIMG="de-$APPNAME-$VERSION"
 USERID=$(id -u)
 START_DEV="de-start-dev-$VERSION.sh"
+
+#
+if [ ! -e "de-config.sh" ] 
+then
+	echo "#!/bin/bash" > de-config.sh
+	echo "DEV_PORT=2345" >> de-config.sh
+fi
+. "$PWD/de-config.sh"
 
 #
 mkdir -p app/src
@@ -69,5 +78,6 @@ cd ../..
 #
 echo "docker run -ti \\" > $START_DEV
 echo "-v $PWD/app/src:/app/src \\" >> $START_DEV
-echo "$APPIMG \\" >> $START_DEV
+echo "$APPIMG \\" >> $START_DEV 
+echo "-p $DEV_PORT:$DEV_PORT \\" >> $START_DEV
 echo "/bin/bash" >> $START_DEV
