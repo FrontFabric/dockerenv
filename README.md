@@ -9,3 +9,5 @@ todo
 -- docs
 -- custom sh before build
 -- script to remove each image
+-- export prod img to tar
+-- IDE
