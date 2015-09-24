@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 BASEURL="https://raw.githubusercontent.com/nodejs/docker-node/master/4.1/Dockerfile"
-BASEIMG="de-nodejs-4-1"
+BASEIMG="de-nodejs-4.1"
 VERSION="0.14.0"
 IMAGE="de-reactjs-$VERSION"
 APPNAME=${PWD##*/}
@@ -10,12 +10,12 @@ USERID=$(id -u)
 START_DEV="de-start-dev-$VERSION.sh"
 
 #
-if [ ! -e "de-config.sh" ] 
+if [ ! -e "de-config-$VERSION.sh" ] 
 then
-	echo "#!/bin/bash" > de-config.sh
-	echo "DEV_PORT=2345" >> de-config.sh
+	echo "#!/bin/bash" > de-config-$VERSION.sh
+	echo "DEV_PORT=2345" >> de-config-$VERSION.sh
 fi
-. "$PWD/de-config.sh"
+. "$PWD/de-config-$VERSION.sh"
 
 #
 mkdir -p app/src
