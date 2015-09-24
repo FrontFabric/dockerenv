@@ -1,2 +1,2 @@
 #!/bin/bash
-DEV_PORT=4567
+PORTS_DEV="-p 4567:3000"

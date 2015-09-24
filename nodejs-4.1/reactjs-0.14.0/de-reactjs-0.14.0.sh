@@ -13,7 +13,7 @@ START_DEV="de-start-dev-$VERSION.sh"
 if [ ! -e "de-config-$VERSION.sh" ] 
 then
 	echo "#!/bin/bash" > de-config-$VERSION.sh
-	echo "DEV_PORT=2345" >> de-config-$VERSION.sh
+	echo "PORTS_DEV=\"-p 4567:3000\"" >> de-config-$VERSION.sh
 fi
 . "$PWD/de-config-$VERSION.sh"
 
@@ -77,7 +77,8 @@ cd ../..
 
 #
 echo "docker run -ti \\" > $START_DEV
+echo "$PORTS_DEV \\" >> $START_DEV
+echo "-v $PWD/app/package.json:/app/package.json \\" >> $START_DEV
 echo "-v $PWD/app/src:/app/src \\" >> $START_DEV
 echo "$APPIMG \\" >> $START_DEV 
-echo "-p $DEV_PORT:$DEV_PORT \\" >> $START_DEV
 echo "/bin/bash" >> $START_DEV
